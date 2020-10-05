@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { MdAdd } from 'react-icons/md'
-
 import Card from '../Card'
-
 import { Container } from './styles';
 
-const List = ({ data }) => {
+const List = ({ data, index: listIndex }) => {
   return (
     <Container done={data.done}>
       <header>
@@ -19,7 +17,14 @@ const List = ({ data }) => {
       </header>
 
       <ul>
-        { data.cards.map(card => <Card key={card.title} data={card}/>) }
+        { data.cards.map((card, index) => (
+          <Card 
+            key={card.title}
+            listIndex={listIndex} 
+            index={index} 
+            data={card}
+          />
+        ))}
       </ul>
     </Container>
   );
